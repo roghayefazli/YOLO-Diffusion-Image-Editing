@@ -22,11 +22,11 @@ Before                After
 
 <img src="data/inputs/test.jpeg" width="23%">
 
-<img src="assets/detection.png" width="23%">
+<img src="data/output/detections/person_mask2.png" width="23%">
 
-<img src="assets/mask.png" width="23%">
+<img src="data/output/detections/person_cutout.png" width="23%">
 
-<img src="assets/output.png" width="23%">
+<img src="data/output/generated_background.png" width="23%">
 
 </p>
 
