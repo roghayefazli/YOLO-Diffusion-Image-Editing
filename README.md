@@ -28,6 +28,9 @@ Before                After
 
 <img src="data/outputs/generated_background.png" width="23%">
 
+<img src="data/outputs/final_result.png" width="23%">
+
+
 </p>
 
 ---
