@@ -26,7 +26,7 @@ Before                After
 
 <img src="data/outputs/detections/person_cutout.png" width="23%">
 
-<img src="data/output/generated_background.png" width="23%">
+<img src="data/outputs/generated_background.png" width="23%">
 
 </p>
 
