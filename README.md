@@ -16,6 +16,10 @@ This project addresses this limitation by automatically detecting objects with *
 
 The result is a more controllable image editing pipeline that preserves the semantic integrity of important objects.
 
+Before                After
+
+[input image]   →   [edited image]<img width="183" height="275" alt="test" src="https://github.com/user-attachments/assets/2f96f31e-6970-4e1d-a924-93782f9d0430" />
+
 ---
 
 # 🚀 Features
