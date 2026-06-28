@@ -1,284 +1,180 @@
 # -YOLO-Diffusion-Image-Editing
 
+# 🎨 Text-Guided Image Editing with Automatic Object Preservation using YOLO and Diffusion Models
 
-YOLODiffEdit
+An end-to-end computer vision pipeline for **text-guided image editing** while **automatically preserving selected objects** using **YOLO object detection** and **diffusion-based generative models**.
 
-<div align="center">
+This project combines object detection and image generation to modify images according to a text prompt while protecting important objects from unintended changes.
 
-🖼️ YOLODiffEdit
+---
 
-Text-Based Image Editing with Automatic Object Preservation using YOLO and Diffusion Models
+# 📌 Project Overview
 
-A deep learning framework for text-guided image editing that automatically detects and preserves foreground objects while generating realistic backgrounds using diffusion models.
+Traditional text-to-image editing models often modify the entire image, including objects that should remain unchanged.
 
-</div>
+This project addresses this limitation by automatically detecting objects with **YOLO**, generating preservation masks, and applying a diffusion model only to editable regions.
 
-⸻
+The result is a more controllable image editing pipeline that preserves the semantic integrity of important objects.
 
-📖 Overview
+---
 
-YOLODiffEdit is a computer vision project that combines YOLO object detection with diffusion-based image generation to perform text-guided image editing while automatically preserving foreground objects.
+# 🚀 Features
 
-Traditional text-based image editing methods often modify important objects together with the background. This project overcomes this limitation by first detecting foreground objects using YOLO, generating object masks, and editing only the background through a conditional diffusion model.
+- ✅ Automatic object detection using YOLO
+- ✅ Automatic object preservation mask generation
+- ✅ Text-guided image editing
+- ✅ Diffusion-based image generation
+- ✅ Editable region masking
+- ✅ High-quality image synthesis
+- ✅ Modular pipeline
+- ✅ Easy customization
 
-The result is a realistic edited image where the important objects remain unchanged.
+---
 
-⸻
+# 🧠 Pipeline
 
-✨ Features
+```text
+                  Input Image
+                       │
+                       ▼
+              YOLO Object Detection
+                       │
+                       ▼
+            Object Preservation Mask
+                       │
+                       ▼
+               Text Prompt Input
+                       │
+                       ▼
+          Diffusion Image Editing
+                       │
+                       ▼
+             Edited Image Output
+```
 
-* 🟢 Text-guided image editing
-* 🟢 Automatic object detection using YOLO
-* 🟢 Foreground object preservation
-* 🟢 Conditional image generation
-* 🟢 Background replacement
-* 🟢 Modular PyTorch implementation
-* 🟢 Easy to extend with other diffusion models
+---
 
-⸻
+# ⚙️ Methodology
 
-🏗️ Project Pipeline
+The proposed framework consists of the following stages:
 
-Input Image
-      │
-      ▼
-YOLO Object Detection
-      │
-      ▼
-Foreground Object Mask
-      │
-      ▼
-Condition Encoder
-      │
-      ▼
-Diffusion Model
-      │
-      ▼
-Background Generation
-      │
-      ▼
-Object Fusion
-      │
-      ▼
-Final Edited Image
+### 1. Object Detection
 
-⸻
+YOLO detects important objects in the input image.
 
-📂 Project Structure
+---
 
-YOLODiffEdit/
-│
-├── main.py
-├── model.py
-├── yolo_detector.py
-├── condition_encoder.py
-├── conditioned_generator.py
-├── background_generator.py
-│
-├── images/
-│   ├── input.jpg
-│   ├── output.jpg
-│   └── architecture.png
-│
-├── requirements.txt
-├── README.md
-├── LICENSE
-└── .gitignore
+### 2. Mask Generation
 
-⸻
+Detected bounding boxes are converted into preservation masks.
 
-⚙️ Installation
+These regions remain unchanged during editing.
 
-Clone the repository:
+---
 
-git clone https://github.com/your-username/YOLODiffEdit.git
+### 3. Text-Guided Editing
 
-Move into the project folder:
+A diffusion model receives:
 
-cd YOLODiffEdit
+- Original image
+- Preservation mask
+- Text prompt
 
-Install dependencies:
+and generates an edited image.
 
+---
+
+### 4. Image Reconstruction
+
+Protected regions are merged with generated regions to produce the final image.
+
+---
+
+# 🛠 Technologies
+
+- Python
+- PyTorch
+- Ultralytics YOLO
+- Diffusers
+- Hugging Face Transformers
+- OpenCV
+- Pillow
+- NumPy
+- Matplotlib
+
+---
+
+# 📦 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/roghayefazli/text-guided-image-editing.git
+
+cd text-guided-image-editing
+```
+
+Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-⸻
+---
 
-📦 Requirements
+# ▶️ Usage
 
-Python >= 3.10
-PyTorch
-TorchVision
-NumPy
-OpenCV
-Pillow
-Ultralytics
-Diffusers
-Transformers
-Accelerate
+1. Load an input image
 
-or
+2. Detect objects using YOLO
 
-pip install torch torchvision ultralytics diffusers transformers accelerate opencv-python pillow numpy
+3. Generate preservation masks
 
-⸻
+4. Enter a text prompt
 
-🚀 Usage
+Example:
 
-Run the project:
+```
+Replace the sky with a sunset while keeping the people unchanged.
+```
 
-python main.py
+5. Generate the edited image
 
-⸻
+---
 
-🧩 Modules
+# 📊 Example Workflow
 
-main.py
-
-Main execution script.
-
-* Loads the input image
-* Executes the editing pipeline
-* Saves the generated image
-
-⸻
-
-yolo_detector.py
-
-Detects foreground objects using YOLO.
-
-Responsibilities:
-
-* Object detection
-* Bounding box generation
-* Mask creation
-
-⸻
-
-condition_encoder.py
-
-Encodes image conditions for the diffusion model.
-
-Responsibilities:
-
-* Feature extraction
-* Conditional embedding
-
-⸻
-
-background_generator.py
-
-Generates a new background according to the text prompt.
-
-⸻
-
-conditioned_generator.py
-
-Produces the final edited image by combining generated background and preserved objects.
-
-⸻
-
-model.py
-
-Contains the neural network architecture and utility functions.
-
-⸻
-
-🔄 Workflow
-
+```
 Input Image
-↓
+      │
+      ▼
 YOLO Detection
-↓
-Foreground Mask
-↓
-Condition Encoder
-↓
-Diffusion Generation
-↓
-Background Editing
-↓
-Foreground Preservation
-↓
-Final Image
+      │
+      ▼
+Mask Generation
+      │
+      ▼
+Stable Diffusion
+      │
+      ▼
+Edited Image
+```
 
-⸻
+---
 
-📸 Example
+# 🔬 Future Improvements
 
-Input
+- Segment Anything (SAM) integration
+- Multi-object preservation
+- Real-time editing
+- Interactive object selection
+- Inpainting refinement
+- Support for multiple diffusion models (SDXL, FLUX)
 
-Person standing in a city street.
+---
 
-Prompt
+# 👩‍💻 Author
 
-Replace the background with a snowy mountain landscape.
+**Roghayeh Fazli**
 
-Output
-
-✅ Person preserved
-
-✅ Clothes preserved
-
-✅ Background replaced
-
-⸻
-
-📊 Future Improvements
-
-* Stable Diffusion XL
-* ControlNet
-* Segment Anything (SAM)
-* Grounding DINO
-* Multi-object editing
-* Interactive editing
-* Batch processing
-* Video editing support
-* Web interface (Gradio)
-* Streamlit application
-
-⸻
-
-🎯 Applications
-
-* AI Photo Editing
-* Digital Art
-* Image Restoration
-* Computer Vision Research
-* Advertising
-* E-commerce
-* Graphic Design
-* Content Creation
-
-⸻
-
-🤝 Contributing
-
-Contributions are welcome.
-
-1. Fork the repository.
-2. Create a feature branch.
-3. Commit your changes.
-4. Open a Pull Request.
-
-⸻
-
-
-🙏 Acknowledgements
-
-This work is based on the following open-source projects:
-
-* PyTorch
-* Ultralytics YOLO
-* Hugging Face Diffusers
-* OpenCV
-* NumPy
-
-Special thanks to the open-source AI community.
-
-⸻
-
-
-
-If you found this project useful, please consider giving it a ⭐ on GitHub.
-
-It helps the project gain visibility and motivates future development.
+GitHub: https://github.com/roghayefazli
